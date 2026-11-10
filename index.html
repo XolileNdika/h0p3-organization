@@ -657,7 +657,7 @@
     </a>
     <div class="card">
       <h3><span class="tag-dot" style="background:var(--blue);"></span>Phone / WhatsApp</h3>
-      <p>Coming soon</p>
+      <p><a href="tel:+27724881582" style="color:inherit;">072 488 1582</a></p>
     </div>
     <div class="card">
       <h3><span class="tag-dot" style="background:var(--purple);"></span>Location</h3>
@@ -769,7 +769,7 @@ const H0P3_CONFIG = {
     twitter: ""
   },
   contact: {
-    phone: "",                 // e.g. "+27 XX XXX XXXX" (add once confirmed)
+    phone: "072 488 1582",     // shown on the Contact page; tapping it dials the number
     address: "Gauteng, South Africa"
   },
   // ADMIN: to add a new project, copy the block below into the array and edit it.
@@ -954,7 +954,7 @@ renderSocialPills('footSocial','badge');
     </a>
     <div class="card">
       <h3><span class="tag-dot" style="background:var(--blue);"></span>Phone / WhatsApp</h3>
-      <p>${c.phone || 'Coming soon'}</p>
+      <p>${c.phone ? `<a href="tel:${c.phone.replace(/[^\d+]/g,'').replace(/^0/,'+27')}" style="color:inherit;">${c.phone}</a>` : 'Coming soon'}</p>
     </div>
     <div class="card">
       <h3><span class="tag-dot" style="background:var(--purple);"></span>Location</h3>
