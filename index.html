@@ -306,6 +306,25 @@
   .form-privacy{font-size:0.82rem; color:#5b665f; margin:18px 0 10px; max-width:640px;}
   .form-privacy a{color:var(--green); font-weight:600;}
   .email-box .form-privacy{font-size:0.82rem; color:#5b665f; margin:12px 0 0; line-height:1.5;}
+
+  /* ---------- OPEN / PAST ROLE TABS ---------- */
+  .role-tabs{display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; margin:4px 0 22px; background:var(--paper-dim); border-radius:999px; width:100%; max-width:440px;}
+  .role-tab{border:none; background:none; padding:10px 8px; border-radius:999px; font-weight:600; font-size:0.88rem; color:var(--ink); cursor:pointer; white-space:nowrap; transition:background .16s ease, color .16s ease;}
+  .role-tab:hover{background:rgba(30,42,36,0.06);}
+  .role-tab[aria-selected="true"]{background:var(--ink); color:var(--paper);}
+  .role-tab .count{display:inline-block; min-width:22px; margin-left:6px; padding:1px 7px; border-radius:999px; font-size:0.74rem; background:rgba(30,42,36,0.10);}
+  .role-tab[aria-selected="true"] .count{background:rgba(251,250,246,0.22);}
+  .role-panel[hidden]{display:none !important;}
+  details.role.past{--gc:#8a948d; background:#fdfdfb;}
+  details.role.past summary > span:first-child{display:flex; align-items:center; flex-wrap:wrap; gap:6px 12px;}
+  details.role.past .status-chip{margin:0;}
+  .status-filled{background:rgba(46,145,101,0.14); color:var(--green);}
+  .status-cancelled{background:rgba(192,57,43,0.12); color:#a93226;}
+  .status-closed{background:var(--paper-dim); color:#5b665f;}
+  .status-key{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:6px 0 18px; font-size:0.85rem; color:#5b665f;}
+  .status-key .status-chip{margin:0;}
+  .past-note{font-size:0.9rem; color:#5b665f; margin:14px 0 0;}
+  .past-empty{margin-top:10px;}
 </style>
 </head>
 <body>
@@ -659,7 +678,13 @@
         <div class="card"><h3><span class="tag-dot" style="background:var(--green);"></span>A strong work ethic</h3><p>You follow through on what you take on.</p></div>
       </div>
 
-      <h3 class="sub-heading" id="open-roles">Open volunteer positions</h3>
+      <h3 class="sub-heading" id="open-roles">Volunteer positions</h3>
+      <div class="role-tabs" role="tablist" aria-label="Volunteer positions">
+        <button class="role-tab" role="tab" id="tab-open-roles" aria-controls="panel-open-roles" aria-selected="true" data-role-tab="open">Open positions<span class="count" id="countOpen"></span></button>
+        <button class="role-tab" role="tab" id="tab-past-roles" aria-controls="panel-past-roles" aria-selected="false" data-role-tab="past">Past positions<span class="count" id="countPast"></span></button>
+      </div>
+
+      <div class="role-panel" id="panel-open-roles" role="tabpanel" aria-labelledby="tab-open-roles">
       <p class="lead">There are 13 volunteer roles open right now. Tap a role to read the full description, then scroll down to the Apply button to apply by email.</p>
       <div class="roles-meta"><span>Preferably around Gauteng</span><span>Unpaid volunteer roles</span><span>No experience required</span></div>
       <div class="role-group-title" style="--gc:var(--green);"><i></i>Leadership and Coordination</div>
@@ -823,6 +848,25 @@
     <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Monitoring and Evaluation (M&amp;E) Volunteer</b>.</p>
   </div>
 </details>
+
+      </div>
+
+      <div class="role-panel" id="panel-past-roles" role="tabpanel" aria-labelledby="tab-past-roles">
+        <p class="lead">Roles that have been filled, cancelled or closed. They are kept here as a record of the team behind h0p3 organization. These roles are not taking applications.</p>
+        <div class="status-key"><span>Each past role is marked</span><span class="status-chip status-filled">Filled</span><span class="status-chip status-cancelled">Cancelled</span><span>or</span><span class="status-chip status-closed">Closed</span></div>
+        <div id="pastRolesList">
+<!-- ADMIN: to move a role here, cut its whole <details class="role" ...> ... </details> block from the Open positions list above, paste it inside this pastRolesList div, then:
+     1. change class="role" to class="role past"
+     2. inside <summary>, change <span>Role name</span> to:
+        <span>Role name <span class="status-chip status-filled">Filled</span></span>
+        (use status-filled / status-cancelled / status-closed, and the matching word)
+     3. delete the "How to apply" heading, its list, the Apply button and the line under it
+     4. add after the role-facts line, for example:
+        <p class="past-note"><b>Filled:</b> November 2026</p>
+     5. update the number "There are 13 volunteer roles open right now" in the Open positions text -->
+        </div>
+        <div class="empty-state past-empty" id="pastRolesEmpty">No past positions yet. When a role is filled, cancelled or closed, it will be listed here.</div>
+      </div>
 
       <h3 class="sub-heading">Not sure which role fits? Express your interest</h3>
       <p class="lead">Send us an email and we'll be in touch. It goes straight to our team for review. No experience is required, just a willingness to help.</p>
@@ -1668,6 +1712,29 @@ document.getElementById('navToggle').addEventListener('click', e=>{
   const id = (location.hash || '').slice(1);
   const el = id && document.getElementById(id);
   if(el && el.classList.contains('tab')) showTab(id);
+})();
+
+/* ========================= VOLUNTEER: OPEN / PAST ROLE TABS ========================= */
+(function roleTabs(){
+  const tabsEl = document.querySelectorAll('[data-role-tab]');
+  if(!tabsEl.length) return;
+  const panels = {open: document.getElementById('panel-open-roles'), past: document.getElementById('panel-past-roles')};
+  const openCount = panels.open.querySelectorAll('details.role').length;
+  const pastCount = panels.past.querySelectorAll('details.role').length;
+  document.getElementById('countOpen').textContent = openCount;
+  document.getElementById('countPast').textContent = pastCount;
+  document.getElementById('pastRolesEmpty').style.display = pastCount ? 'none' : '';
+  function select(which){
+    tabsEl.forEach(t => t.setAttribute('aria-selected', String(t.dataset.roleTab === which)));
+    panels.open.hidden = which !== 'open';
+    panels.past.hidden = which !== 'past';
+  }
+  tabsEl.forEach(t => t.addEventListener('click', () => select(t.dataset.roleTab)));
+  select('open');
+  if(location.hash === '#past-roles'){ showTab('volunteer'); select('past'); }
+  window.addEventListener('hashchange', () => {
+    if(location.hash === '#past-roles'){ showTab('volunteer'); select('past'); }
+  });
 })();
 
 /* ========================= SCROLL REVEAL (About timeline) ========================= */
