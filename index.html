@@ -329,6 +329,19 @@
   .status-key .status-chip{margin:0;}
   .past-note{font-size:0.9rem; color:#5b665f; margin:14px 0 0;}
   .past-empty{margin-top:10px;}
+
+  /* ---------- SHARE (Breaking The Bread) ---------- */
+  #breaking-the-bread{scroll-margin-top:76px;}
+  .share-panel{display:none; margin-top:16px; padding:18px 20px; background:var(--paper); border:1px solid var(--line); border-radius:14px;}
+  .share-panel.open, html:not(.js) .share-panel{display:block;}
+  .share-panel p{font-size:0.88rem; color:#5b665f; margin:0 0 12px; line-height:1.5;}
+  .share-links{display:flex; flex-wrap:wrap; gap:10px;}
+  .share-links a, .share-links button{display:inline-flex; align-items:center; gap:8px; padding:9px 16px 9px 9px; border-radius:999px; background:#fff; border:1px solid var(--line); font:inherit; font-weight:600; font-size:0.86rem; color:var(--ink); text-decoration:none; cursor:pointer; transition:transform .16s ease, box-shadow .16s ease;}
+  .share-links a:hover, .share-links button:hover{transform:translateY(-2px); box-shadow:0 6px 16px rgba(30,42,36,0.10);}
+  .share-links i{width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .share-links i svg{width:14px; height:14px;}
+  .share-wa{background:#25a35a;} .share-fb{background:var(--purple);} .share-x{background:#111;} .share-em{background:var(--green);} .share-ln{background:var(--blue);}
+  .share-copied{display:inline-block; margin-left:4px; font-size:0.82rem; color:var(--green); font-weight:600;}
 </style>
 </head>
 <body>
@@ -436,7 +449,7 @@
       <p class="admin-note">Admin note: new projects are added by editing the H0P3_CONFIG.projects list near the top of the page's script. No rebuild required. Each entry supports school/organisation name, location, date, pads donated, beneficiaries, description, status, and a list of photos (send them to Claude and they get built into the page).</p>
 
       <h3 class="sub-heading" id="breadHeading">Our other initiatives</h3>
-      <article class="bread-card" aria-labelledby="breadTitle">
+      <article class="bread-card" id="breaking-the-bread" aria-labelledby="breadTitle">
         <div class="bread-head">
           <h3 id="breadTitle">Breaking The Bread</h3>
           <span class="status-chip status-empty" style="margin:0;">Coming soon</span>
@@ -449,8 +462,20 @@
           <div><b style="color:var(--purple);">10+</b><span>loaves planned each time</span></div>
         </div>
         <div class="bread-actions">
-          <button class="btn" data-tab="volunteer">Register interest</button>
-          <a class="btn outline" href="mailto:h0p3.organization@gmail.com?subject=Supporting%20Breaking%20The%20Bread">Help us launch it</a>
+          <a class="btn" href="mailto:h0p3.organization@gmail.com?subject=Breaking%20The%20Bread%3A%20I%20would%20like%20to%20help&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20help%20with%20Breaking%20The%20Bread.%0D%0A%0D%0AHow%20I%20would%20like%20to%20help%20%28for%20example%3A%20joining%20bread%20runs%2C%20donating%20bread%20or%20money%2C%20transport%2C%20spreading%20the%20word%29%3A%0D%0A%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AThank%20you.">Register interest</a>
+          <button class="btn outline" type="button" id="breadShareBtn" aria-expanded="false" aria-controls="breadSharePanel">Help us spread the word</button>
+        </div>
+        <p class="email-fallback">Register interest not opening your email app? Email <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Breaking The Bread: I would like to help</b> and tell us how you would like to help.</p>
+        <div class="share-panel" id="breadSharePanel">
+          <p>Share Breaking The Bread with your friends and followers. Every share helps us find the people and support we need to get it started.</p>
+          <div class="share-links">
+            <a href="https://wa.me/?text=Breaking%20The%20Bread%20by%20h0p3%20organization%3A%20One%20Loaf%2C%20One%20h0p3.%20Soon%2C%20every%20week%2C%20we%20will%20share%20at%20least%2010%20loaves%20of%20bread%20with%20people%20living%20on%20the%20streets.%20Help%20us%20get%20it%20started%3A%20https%3A//www.h0p3.org/%23breaking-the-bread" target="_blank" rel="noopener"><i class="share-wa"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.5-4.3A8.5 8.5 0 1 1 20.5 11.6z"/><path d="M9 8.6c.3 2.9 2.6 5.3 5.6 5.8l1.2-1.4-1.9-.9-.8.8c-1-.5-1.9-1.4-2.4-2.4l.8-.8-.9-1.9z" fill="white" stroke="none"/></svg></i>WhatsApp</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.h0p3.org%2F%23breaking-the-bread" target="_blank" rel="noopener"><i class="share-fb"><svg viewBox="0 0 24 24" fill="white"><path d="M13.5 21v-8h2.7l.4-3.3h-3.1V7.7c0-.95.26-1.6 1.63-1.6H16.7V3.14C16.4 3.1 15.4 3 14.3 3c-2.4 0-4 1.46-4 4.14v2.56H7.6v3.3h2.7v8h3.2z"/></svg></i>Facebook</a>
+            <a href="https://twitter.com/intent/tweet?text=Breaking%20The%20Bread%20by%20h0p3%20organization%3A%20One%20Loaf%2C%20One%20h0p3.%20Soon%2C%20every%20week%2C%20we%20will%20share%20at%20least%2010%20loaves%20of%20bread%20with%20people%20living%20on%20the%20streets.%20Help%20us%20get%20it%20started%3A&amp;url=https%3A%2F%2Fwww.h0p3.org%2F%23breaking-the-bread" target="_blank" rel="noopener"><i class="share-x"><svg viewBox="0 0 24 24" fill="white"><path d="M18.9 3H21.7L15.6 10.1 22.8 21H17.2L12.9 14.9 7.9 21H5.1L11.6 13.4 4.7 3H10.4L14.3 8.6 18.9 3z"/></svg></i>X / Twitter</a>
+            <a href="mailto:h0p3.organization@gmail.com?subject=Have%20you%20heard%20about%20Breaking%20The%20Bread%3F&amp;body=Breaking%20The%20Bread%20by%20h0p3%20organization%3A%20One%20Loaf%2C%20One%20h0p3.%20Soon%2C%20every%20week%2C%20we%20will%20share%20at%20least%2010%20loaves%20of%20bread%20with%20people%20living%20on%20the%20streets.%20Help%20us%20get%20it%20started%3A%0D%0Ahttps%3A//www.h0p3.org/%23breaking-the-bread"><i class="share-em"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></i>Email</a>
+            <button type="button" id="breadCopyLink"><i class="share-ln"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg></i>Copy link</button><span class="share-copied" id="breadCopied" role="status"></span>
+          </div>
+          <p style="margin:12px 0 0;">For Instagram or TikTok, tap <b>Copy link</b> and paste it into your story, post or bio.</p>
         </div>
       </article>
 
@@ -1716,6 +1741,10 @@ document.getElementById('navToggle').addEventListener('click', e=>{
   const id = (location.hash || '').slice(1);
   const el = id && document.getElementById(id);
   if(el && el.classList.contains('tab')) showTab(id);
+  else if(el){
+    const sec = el.closest('section.tab');
+    if(sec){ showTab(sec.id); requestAnimationFrame(() => el.scrollIntoView({block:'start'})); }
+  }
 })();
 
 /* ========================= VOLUNTEER: OPEN / PAST ROLE TABS ========================= */
@@ -1738,6 +1767,42 @@ document.getElementById('navToggle').addEventListener('click', e=>{
   if(location.hash === '#past-roles'){ showTab('volunteer'); select('past'); }
   window.addEventListener('hashchange', () => {
     if(location.hash === '#past-roles'){ showTab('volunteer'); select('past'); }
+  });
+})();
+
+/* ========================= SHARE: BREAKING THE BREAD ========================= */
+(function breadShare(){
+  const btn = document.getElementById('breadShareBtn');
+  if(!btn) return;
+  const panel = document.getElementById('breadSharePanel');
+  const url = 'https://www.h0p3.org/#breaking-the-bread';
+  const text = 'Breaking The Bread by h0p3 organization: One Loaf, One h0p3. Soon, every week, we will share at least 10 loaves of bread with people living on the streets. Help us get it started:';
+  const touch = window.matchMedia('(pointer: coarse)').matches;
+  function togglePanel(){
+    const open = !panel.classList.contains('open');
+    panel.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  }
+  btn.addEventListener('click', async () => {
+    if(touch && navigator.share){
+      try { await navigator.share({title:'Breaking The Bread | h0p3 organization', text, url}); return; }
+      catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    togglePanel();
+  });
+  const copyBtn = document.getElementById('breadCopyLink');
+  const note = document.getElementById('breadCopied');
+  copyBtn.addEventListener('click', async () => {
+    let ok = false;
+    try { await navigator.clipboard.writeText(url); ok = true; }
+    catch(e){
+      const t = document.createElement('textarea'); t.value = url; t.setAttribute('readonly',''); t.style.position='fixed'; t.style.opacity='0';
+      document.body.appendChild(t); t.select();
+      try { ok = document.execCommand('copy'); } catch(_){}
+      t.remove();
+    }
+    note.textContent = ok ? 'Link copied!' : url;
+    setTimeout(() => { if(ok) note.textContent = ''; }, 2500);
   });
 })();
 
