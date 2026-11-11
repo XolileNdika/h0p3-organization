@@ -233,6 +233,7 @@
   .foot-bottom{max-width:1080px; margin:34px auto 0; padding-top:22px; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.78rem; color:#8a948d;}
   .foot-bottom .legal-links{display:flex; gap:16px;}
   .foot-bottom button{background:none; border:none; padding:0; color:#8a948d; font-size:0.78rem; cursor:pointer; text-decoration:underline;}
+  .foot-bottom a{color:#8a948d; font-size:0.78rem; text-decoration:underline;}
 
   /* Breaking The Bread */
   .bread-card{background:#fff; border:1px solid var(--line); border-top:4px solid var(--lime); border-radius:18px; padding:30px; margin-top:8px;}
@@ -291,6 +292,20 @@
   .role-body li{margin-bottom:4px;}
   .role-apply{display:inline-flex; align-items:center; gap:8px; margin-top:20px; padding:12px 22px; border-radius:999px; background:var(--gc); color:#fff; font-weight:600; font-size:0.9rem; text-decoration:none; transition:transform .16s ease;}
   .role-apply:hover{transform:translateY(-2px);}
+  /* Privacy Policy page */
+  .policy{max-width:760px;}
+  .policy .updated{font-size:0.85rem; color:#5b665f; margin:-6px 0 22px;}
+  .policy h3.sub-heading{font-size:1.15rem; margin:34px 0 10px;}
+  .policy p, .policy li{font-size:0.98rem; line-height:1.7; color:#3a453f;}
+  .policy p{margin:0 0 12px;}
+  .policy ul{margin:0 0 12px; padding-left:22px;}
+  .policy li{margin-bottom:6px;}
+  .policy a{color:var(--green); font-weight:600;}
+  .policy .summary{background:#fff; border:1px solid var(--line); border-left:4px solid var(--green); border-radius:14px; padding:18px 22px; margin:0 0 8px;}
+  .policy .summary p{margin:0;}
+  .form-privacy{font-size:0.82rem; color:#5b665f; margin:18px 0 10px; max-width:640px;}
+  .form-privacy a{color:var(--green); font-weight:600;}
+  .email-box .form-privacy{font-size:0.82rem; color:#5b665f; margin:12px 0 0; line-height:1.5;}
 </style>
 </head>
 <body>
@@ -504,6 +519,7 @@
         <ul><li>Your story, in your own words</li><li>The name you would like shown publicly</li><li>A working fundraising link (GoFundMe, BackaBuddy, or similar) where funds go directly to you</li><li>Your funding target, in rand</li><li>A photo that fits your story, attached to the email</li><li>Your phone or WhatsApp number (kept private, only h0p3 organization sees it)</li></ul>
         <a class="btn" href="mailto:h0p3.organization@gmail.com?subject=Tell%20A%20Story%3A%20my%20story&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AMy%20full%20name%3A%0D%0AName%20to%20show%20publicly%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AFundraising%20link%3A%0D%0AFunding%20target%20%28R%29%3A%0D%0A%0D%0AMy%20story%3A%0D%0A%0D%0A%0D%0A%28Photo%20attached%29%0D%0A%0D%0AI%20confirm%20the%20funds%20go%20directly%20to%20me%20and%20the%20information%20I%20have%20given%20is%20true.">Email us your story</a>
         <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Tell A Story: my story</b>.</p>
+        <p class="form-privacy">Your phone number and email stay private and are only used by h0p3 organization. Read how we look after your information in our <a href="#privacy" data-tab="privacy">Privacy Policy</a>.</p>
       </div>
 
       <h3 class="sub-heading">Current stories</h3>
@@ -538,6 +554,7 @@
         <ul><li>Whether you are suggesting a new activity or supporting one already listed</li><li>The activity name, and a short description if it is new</li><li>How you would like to help</li><li>Your name, phone or WhatsApp number, and area</li><li>Whether we may show your name publicly as a supporter</li></ul>
         <a class="btn" href="mailto:h0p3.organization@gmail.com?subject=Activity%3A%20suggestion%20or%20support&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0ANew%20activity%20or%20supporting%20an%20existing%20one%3A%0D%0AActivity%20name%3A%0D%0ADescription%3A%0D%0AHow%20I%20would%20like%20to%20help%3A%0D%0A%0D%0AMy%20name%3A%0D%0APhone%20/%20WhatsApp%3A%0D%0AArea%20/%20suburb%3A%0D%0AMay%20you%20show%20my%20name%20publicly%20as%20a%20supporter%20%28yes/no%29%3A%0D%0A%0D%0AThank%20you.">Email us about an activity</a>
         <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Activity: suggestion or support</b>.</p>
+        <p class="form-privacy">Your phone number and email stay private and are only used by h0p3 organization. Read how we look after your information in our <a href="#privacy" data-tab="privacy">Privacy Policy</a>.</p>
       </div>
     </div>
   </section>
@@ -814,7 +831,93 @@
         <ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>How you would like to help (Pads Donation, Breaking The Bread, events, or anything that is needed)</li><li>Your CV, attached, if you have one (not required)</li></ul>
         <a class="btn" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%3A%20expression%20of%20interest&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20volunteer.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0AHow%20I%20would%20like%20to%20help%3A%0D%0A%0D%0AThank%20you.">Email us to volunteer</a>
         <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer: expression of interest</b>.</p>
+        <p class="form-privacy">Your phone number and email stay private and are only used by h0p3 organization. Read how we look after your information in our <a href="#privacy" data-tab="privacy">Privacy Policy</a>.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section class="tab" id="privacy">
+    <div class="wrap policy">
+      <span class="eyebrow green">your information</span>
+      <div class="interlock"><span></span><span></span><span></span><span></span></div>
+      <h2 class="section-title">Privacy Policy</h2>
+      <p class="updated">Last updated: 11 November 2026</p>
+
+      <div class="summary"><p>In short: we only ask for the details we need, we keep your phone number and email private, we never sell your information, and you can ask us to show, fix or delete your details at any time by emailing <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a>.</p></div>
+
+      <h3 class="sub-heading">1. Who we are</h3>
+      <p>h0p3 organization is a welfare organisation based in Gauteng, South Africa. We are responsible for the personal information collected through this website. We follow the Protection of Personal Information Act (POPIA).</p>
+
+      <h3 class="sub-heading">2. What information we collect</h3>
+      <p>We only collect what you choose to send us by email:</p>
+      <ul>
+        <li><strong>Volunteer applications and expressions of interest:</strong> your full name, phone or WhatsApp number, the area you live in, your age, your availability, the role or areas you would like to support, why you would like to volunteer, and your CV if you choose to attach one.</li>
+        <li><strong>Messages:</strong> your name, how to reach you, and your message.</li>
+        <li><strong>Tell A Story:</strong> your full name, the name you would like shown publicly, your phone or WhatsApp number, your story, your funding target, the link to your fundraising page, and a photo that matches your story.</li>
+        <li><strong>Activities:</strong> your name, the activity you suggest or support, your phone or WhatsApp number, the area where you live, whether you are willing to help once the activity goes live, and whether we may show your name publicly.</li>
+      </ul>
+      <p>Your email address is also visible to us, because you are emailing us.</p>
+      <p>When you visit the site, the services that host it can see technical details such as your IP address and the type of device and browser you use. We do not use this to identify you.</p>
+
+      <h3 class="sub-heading">3. Why we use your information</h3>
+      <ul>
+        <li>To reply to your messages and questions.</li>
+        <li>To contact volunteers about roles, drop offs, drives and activities.</li>
+        <li>To check stories and fundraising links before they are shared, and to contact the person once their target has been reached.</li>
+        <li>To tell supporters when an activity they backed goes live.</li>
+        <li>To report on our work, for example how many people took part.</li>
+      </ul>
+      <p>We will not use your details for anything unrelated without asking you first.</p>
+
+      <h3 class="sub-heading">4. What is public and what stays private</h3>
+      <ul>
+        <li><strong>Always private:</strong> phone numbers, email addresses and the area you live in. Only the h0p3 organization team can see them.</li>
+        <li><strong>Stories:</strong> once a story is approved, the story itself, its photo, the funding target, the progress and the link to the fundraising page may be shown on this website so that donors can follow it.</li>
+        <li><strong>Activity supporters:</strong> if you vote for or support an activity, your full name and photo may be shown next to that activity. Your contact details are never shown.</li>
+        <li><strong>Photos from our work:</strong> we only publish photos of people with their permission. For children, we ask for the permission of the school and of a parent or guardian.</li>
+      </ul>
+
+      <h3 class="sub-heading">5. Who we share it with</h3>
+      <p>We do not sell or rent your information. We use a few services to run this website, and they handle information on our behalf:</p>
+      <ul>
+        <li><strong>Google (Gmail)</strong> receives and stores the emails you send us.</li>
+        <li><strong>GitHub</strong> hosts this website.</li>
+        <li><strong>Cloudflare</strong> looks after our domain name.</li>
+        <li><strong>Google Fonts</strong> supplies the lettering used on the site, which means Google can see that a page was loaded.</li>
+      </ul>
+      <p>Some of these services store information outside South Africa. We choose services that protect information, and we only share what is needed for them to do their job. We may also share information if the law requires us to.</p>
+      <p>Donations to a story are made on the fundraising page that the person provides, such as a crowdfunding site. They do not go through us, and we never ask for bank or card details on this website. Those fundraising sites have their own privacy policies.</p>
+
+      <h3 class="sub-heading">6. How long we keep it</h3>
+      <p>We keep your information only for as long as we need it for the reason you gave it to us. For example, volunteer details are kept while we are recruiting or running activities, and story details are kept until the fundraiser has ended and we have been in touch. After that we delete the details or remove anything that identifies you. You can also ask us to delete your details sooner.</p>
+
+      <h3 class="sub-heading">7. Keeping it safe</h3>
+      <p>We take reasonable steps to protect your information, including limiting who on our team can see it. No website or online service can promise complete security, so please do not send us anything you would not want to share.</p>
+
+      <h3 class="sub-heading">8. Cookies and links to other sites</h3>
+      <p>This website does not use advertising or tracking cookies of its own. Our pages also link to other sites, such as Instagram and Facebook, and we are not responsible for how those sites handle information.</p>
+
+      <h3 class="sub-heading">9. Children</h3>
+      <p>If you are under 18, please ask a parent or guardian to help you, or to email us with you or for you.</p>
+
+      <h3 class="sub-heading">10. Your rights</h3>
+      <p>Under POPIA you can ask us to:</p>
+      <ul>
+        <li>tell you what information we hold about you,</li>
+        <li>correct information that is wrong,</li>
+        <li>delete your information,</li>
+        <li>stop using your information, or stop showing your name or photo on this website.</li>
+      </ul>
+      <p>Email <a href="mailto:h0p3.organization@gmail.com?subject=Privacy%20request">h0p3.organization@gmail.com</a> and tell us what you would like. We will reply as soon as we can. If you are unhappy with how we handled your information, you can complain to the Information Regulator of South Africa at <a href="https://inforegulator.org.za" target="_blank" rel="noopener noreferrer">inforegulator.org.za</a>.</p>
+
+      <h3 class="sub-heading">11. Changes to this policy</h3>
+      <p>We may update this policy from time to time. The date at the top shows when it was last changed.</p>
+
+      <h3 class="sub-heading">12. Contact us</h3>
+      <p>h0p3 organization<br>Gauteng, South Africa<br><a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a></p>
+
+      <button class="btn outline" data-tab="home" style="margin-top:20px;">Back to home</button>
     </div>
   </section>
 
@@ -876,6 +979,7 @@
         <ul><li>Your name</li><li>How we can reach you (phone, WhatsApp or email)</li><li>Your message</li></ul>
         <a class="btn" href="mailto:h0p3.organization@gmail.com?subject=Message%20for%20h0p3%20organization&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AName%3A%0D%0APhone%20/%20WhatsApp%3A%0D%0A%0D%0AMessage%3A%0D%0A%0D%0A%0D%0AThank%20you.">Email us a message</a>
         <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Message for h0p3 organization</b>.</p>
+        <p class="form-privacy">Your phone number and email stay private and are only used by h0p3 organization. Read how we look after your information in our <a href="#privacy" data-tab="privacy">Privacy Policy</a>.</p>
       </div>
 
       <div class="cta-band">
@@ -920,7 +1024,7 @@
   <div class="foot-bottom">
     <span>&copy; <span id="year">2026</span> h0p3 organization. All rights reserved.</span>
     <span class="legal-links">
-      <button onclick="openLegalModal('privacy')">Privacy Policy</button>
+      <a href="#privacy" data-tab="privacy">Privacy Policy</a>
       <button onclick="openLegalModal('terms')">Terms</button>
     </span>
   </div>
