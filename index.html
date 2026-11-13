@@ -364,21 +364,30 @@
   .share-wa{background:#25a35a;} .share-fb{background:var(--purple);} .share-x{background:#111;} .share-em{background:var(--green);} .share-ln{background:var(--blue);}
   .share-copied{display:inline-block; margin-left:4px; font-size:0.82rem; color:var(--green); font-weight:600;}
 
-  /* ---------- VOLUNTEER AGREEMENT GATE ---------- */
-  .agree-box{background:#fff; border:1px solid var(--line); border-left:5px solid var(--green); border-radius:16px; padding:22px 24px; margin:22px 0 8px; scroll-margin-top:80px;}
-  .agree-box h4{font-family:'Baloo 2', sans-serif; font-size:1.1rem; font-weight:700; margin:0 0 8px;}
-  .agree-box p, .agree-box li{font-size:1rem; line-height:1.65; color:#2b352f;}
-  .agree-box p{margin:0 0 10px;}
-  .agree-box ul{margin:0 0 12px; padding-left:22px;}
-  .agree-box a{color:var(--green); font-weight:600;}
-  .agree-check{display:flex; align-items:flex-start; gap:12px; margin-top:14px; padding:14px 16px; background:var(--paper); border:1.5px solid var(--line); border-radius:12px; cursor:pointer; font-weight:600; font-size:1rem; line-height:1.5;}
-  .agree-check input{width:22px; height:22px; margin:1px 0 0; flex-shrink:0; accent-color:var(--green); cursor:pointer;}
-  .agree-status{font-size:0.9rem; margin:10px 0 0 !important; color:var(--green) !important; font-weight:600;}
-  .apply-locked{margin-top:18px; padding:14px 16px; border:1.5px dashed var(--line); border-radius:12px; font-size:0.92rem; color:#4a554e; line-height:1.55;}
-  .apply-locked button{display:inline; text-align:left; background:none; border:none; padding:0; font:inherit; font-weight:700; color:var(--green); text-decoration:underline; cursor:pointer;}
-  html.js body:not(.vol-agreed) .apply-gated{display:none;}
-  html.js body.vol-agreed .apply-locked{display:none;}
-  html:not(.js) .apply-locked{display:none;}
+
+  /* ---------- OWNERSHIP OF WORK GATE (Volunteer page) ---------- */
+  .clause-card{max-width:760px; margin-top:22px; background:#fff; border:1px solid var(--line); border-left:5px solid var(--purple); border-radius:16px; padding:28px 28px 24px; scroll-margin-top:80px;}
+  .clause-card h3{font-size:1.35rem; font-weight:800; margin-bottom:6px;}
+  .clause-card .clause-intro{font-size:0.95rem; color:#4a554e; margin:0 0 18px; line-height:1.6;}
+  .clause-text{font-family:'Work Sans', sans-serif; font-size:1.05rem; line-height:1.75; color:var(--ink);}
+  .clause-text p{margin:0 0 14px;}
+  .clause-also{font-size:0.95rem; color:#3a453f; line-height:1.6; margin:4px 0 0;}
+  .clause-also a{color:var(--green); font-weight:600;}
+  .clause-form{margin-top:18px; padding-top:18px; border-top:1px solid var(--line); display:grid; gap:14px;}
+  .clause-form label.field{display:grid; gap:6px; font-weight:600; font-size:0.95rem;}
+  .clause-form input[type=text], .clause-form input[type=email]{border:1px solid rgba(30,42,36,0.25); border-radius:10px; padding:12px 14px; font-size:1rem; background:var(--paper); color:var(--ink); width:100%;}
+  .clause-check{display:flex; gap:12px; align-items:flex-start; font-size:1rem; line-height:1.55; cursor:pointer;}
+  .clause-check input{width:22px; height:22px; margin-top:2px; flex-shrink:0; accent-color:var(--green);}
+  .clause-form .btn{margin-top:4px; justify-self:start;}
+  .clause-form .btn[disabled]{opacity:0.45; cursor:not-allowed; transform:none;}
+  .clause-msg{font-size:0.9rem; color:#5b665f; margin:0;}
+  .clause-done{max-width:760px; margin:22px 0 4px; padding:14px 18px; border-radius:12px; background:rgba(46,145,101,0.10); color:var(--green); font-weight:600; font-size:0.95rem; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;}
+  .clause-done[hidden]{display:none;}
+  .clause-done button{background:none; border:none; color:var(--ink); text-decoration:underline; cursor:pointer; font-size:0.85rem; padding:0; font-family:inherit;}
+  html.js body:not(.clause-agreed) #rolesGated{display:none;}
+  html.js body.clause-agreed #clauseGate{display:none;}
+  html:not(.js) .clause-form{display:none;}
+  @media (max-width:600px){ .clause-card{padding:22px 18px 20px;} }
 </style>
 </head>
 <body>
@@ -744,28 +753,37 @@
         <div class="card"><h3><span class="tag-dot" style="background:var(--green);"></span>A strong work ethic</h3><p>You follow through on what you take on.</p></div>
       </div>
 
-      <h3 class="sub-heading" id="open-roles">Volunteer positions</h3>
+      <h3 class="sub-heading" id="open-roles">Open volunteer positions</h3>
+      <p class="lead">There are 13 volunteer roles open right now. Before you can see the roles and how to apply, please read and agree to our Ownership of Work clause.</p>
+
+      <div class="clause-card" id="clauseGate">
+        <h3>Ownership of Work</h3>
+        <p class="clause-intro">Every h0p3 organization volunteer agrees to this clause. Your agreement is recorded with your name and the date.</p>
+        <div class="clause-text">
+          <p>I understand and agree that any work, content or material I create, design, write, photograph, film, build or contribute while volunteering for or on behalf of h0p3 organization, whether alone or together with others, belongs fully to h0p3 organization.</p>
+          <p>This includes, but is not limited to, designs, logos, graphics, photographs, videos, written content, social media posts, documents, websites, ideas and event materials.</p>
+          <p>h0p3 organization may use, edit, publish, share or adapt this work for any purpose without further permission or payment.</p>
+          <p>I will not claim ownership of this work or use it for personal or commercial purposes without written permission from h0p3 organization.</p>
+        </div>
+        <form class="clause-form" id="clauseForm" novalidate>
+          <label class="field">Full name<input type="text" id="clauseName" autocomplete="name" required></label>
+          <label class="field">Email<input type="email" id="clauseEmail" autocomplete="email" required></label>
+          <label class="clause-check"><input type="checkbox" id="clauseAgree"><span>I have read and agree to the Ownership of Work clause above.</span></label>
+          <button type="submit" class="btn" id="clauseBtn" disabled>I agree, show the roles</button>
+          <p class="clause-msg" id="clauseMsg" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div id="rolesGated">
+      <div class="clause-done" id="clauseDone" hidden><span id="clauseDoneText">You agreed to the Ownership of Work clause.</span><button type="button" id="clauseReset">Not you? Start again</button></div>
       <div class="role-tabs" role="tablist" aria-label="Volunteer positions">
         <button class="role-tab" role="tab" id="tab-open-roles" aria-controls="panel-open-roles" aria-selected="true" data-role-tab="open">Open positions<span class="count" id="countOpen"></span></button>
         <button class="role-tab" role="tab" id="tab-past-roles" aria-controls="panel-past-roles" aria-selected="false" data-role-tab="past">Past positions<span class="count" id="countPast"></span></button>
       </div>
 
       <div class="role-panel" id="panel-open-roles" role="tabpanel" aria-labelledby="tab-open-roles">
-      <p class="lead">There are 13 volunteer roles open right now. Tap a role to read the full description, then scroll down to the Apply button to apply by email.</p>
+      <p class="lead">Tap a role to read the full description, then scroll down to the Apply button to apply by email.</p>
       <div class="roles-meta"><span>Preferably around Gauteng</span><span>Unpaid volunteer roles</span><span>No experience required</span></div>
-        <div class="agree-box" id="volunteer-agreement">
-          <h4>Before you apply: volunteer terms</h4>
-          <p>To see how to apply for a role, please read and agree to the following. This is part of our <a href="#terms" data-tab="terms">Terms of Use</a> (section 7, Volunteering).</p>
-          <ul>
-            <li>Volunteering with h0p3 organization is unpaid and is not employment.</li>
-            <li>Sending a volunteer application does not guarantee a role.</li>
-            <li>We may ask for more information before someone joins an activity, and we may decline an application.</li>
-            <li>We may end someone's involvement if they do not follow our guidance or put others at risk.</li>
-            <li>Your details are handled as set out in our <a href="#privacy" data-tab="privacy">Privacy Policy</a>.</li>
-          </ul>
-          <label class="agree-check"><input type="checkbox" id="volAgree"> <span>I have read and agree to the h0p3 organization volunteer terms, the <a href="#terms" data-tab="terms">Terms of Use</a> and the <a href="#privacy" data-tab="privacy">Privacy Policy</a>.</span></label>
-          <p class="agree-status" id="volAgreeStatus" role="status"></p>
-        </div>
       <div class="role-group-title" style="--gc:var(--green);"><i></i>Leadership and Coordination</div>
       <details class="role" style="--gc:var(--green);">
   <summary><span>Initiative Coordinator</span><span class="chev"><svg viewBox="0 0 12 12" fill="none" stroke="#1E2A24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l4 4 4-4"/></svg></span></summary>
@@ -774,10 +792,9 @@
     <h4>Purpose of the role</h4><p>Owns the overall success of the Pads Donation initiative by setting direction, coordinating all volunteer teams, and reporting progress to h0p3 organization leadership.</p>
     <h4>Key responsibilities</h4><ul><li>Set quarterly targets for pads distributed, schools and communities reached, and funds raised</li><li>Coordinate across Procurement, Logistics, Outreach, and Fundraising teams</li><li>Chair monthly volunteer team meetings and track action items</li><li>Compile and present progress reports to h0p3 leadership</li><li>Identify risks such as stock shortages and funding gaps early and escalate solutions</li><li>Represent the initiative in high level partnership or donor conversations</li></ul>
     <h4>Requirements</h4><ul><li>Strong organizational and time management skills</li><li>Comfortable using spreadsheets and reporting tools (Google Sheets, Excel)</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Initiative%20Coordinator&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Initiative%20Coordinator%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Initiative Coordinator</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Initiative Coordinator</b>.</p>
   </div>
 </details>
       <details class="role" style="--gc:var(--green);">
@@ -787,10 +804,9 @@
     <h4>Purpose of the role</h4><p>Builds and sustains the volunteer base by recruiting new members, onboarding them, and keeping the team engaged and scheduled.</p>
     <h4>Key responsibilities</h4><ul><li>Advertise open volunteer roles and screen applicants</li><li>Run onboarding sessions for new volunteers</li><li>Maintain a volunteer roster with roles, availability, and contact details</li><li>Schedule volunteers for distribution days and events</li><li>Check in regularly with volunteers to address concerns and prevent burnout</li><li>Recognize and celebrate volunteer contributions</li></ul>
     <h4>Requirements</h4><ul><li>Strong interpersonal and people management skills</li><li>Reliable communication (email, WhatsApp, phone)</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Volunteer%20Manager&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Volunteer%20Manager%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Volunteer Manager</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Volunteer Manager</b>.</p>
   </div>
 </details>
       <div class="role-group-title" style="--gc:var(--blue);"><i></i>Operations</div>
@@ -801,10 +817,9 @@
     <h4>Purpose of the role</h4><p>Secures the pads and related supplies at the best possible cost through purchasing, negotiation, or in kind donation agreements.</p>
     <h4>Key responsibilities</h4><ul><li>Research and compare pad suppliers and manufacturers for price and quality</li><li>Negotiate bulk purchase or donation in kind agreements</li><li>Place and track purchase orders in line with budget</li><li>Build relationships with manufacturers for recurring discounted or free stock</li><li>Ensure quality control on all supplies received</li></ul>
     <h4>Requirements</h4><ul><li>Attention to detail and budget consciousness</li><li>Comfortable making calls or visits to suppliers</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Procurement%20and%20Sourcing%20Officer&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Procurement%20and%20Sourcing%20Officer%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Procurement and Sourcing Officer</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Procurement and Sourcing Officer</b>.</p>
   </div>
 </details>
       <details class="role" style="--gc:var(--blue);">
@@ -814,10 +829,9 @@
     <h4>Purpose of the role</h4><p>Gets pads from storage into the hands of the girls and women who need them, safely, on time, and with dignity.</p>
     <h4>Key responsibilities</h4><ul><li>Pack pad kits ahead of distribution days</li><li>Plan and follow delivery routes to schools and community sites</li><li>Distribute kits respectfully and discreetly</li><li>Report quantities distributed per site after each visit</li><li>Flag any transport, access, or safety issues</li></ul>
     <h4>Requirements</h4><ul><li>Physically able to help with packing and carrying supplies</li><li>Reliable and punctual on distribution days</li><li>Comfortable interacting respectfully with school age children</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Logistics%20and%20Distribution%20Team%20Member&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Logistics%20and%20Distribution%20Team%20Member%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Logistics and Distribution Team Member</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Logistics and Distribution Team Member</b>.</p>
   </div>
 </details>
       <details class="role" style="--gc:var(--blue);">
@@ -827,10 +841,9 @@
     <h4>Purpose of the role</h4><p>Keeps track of what is in stock, what has been distributed, and what needs reordering, so no distribution day is ever short on supplies.</p>
     <h4>Key responsibilities</h4><ul><li>Maintain an up to date stock log of pads and related supplies</li><li>Conduct periodic physical stock counts at storage sites</li><li>Flag low stock levels to Procurement ahead of shortages</li><li>Track which schools and communities received which quantities</li><li>Ensure proper, hygienic storage conditions</li></ul>
     <h4>Requirements</h4><ul><li>Comfortable with spreadsheets or simple inventory apps</li><li>Detail oriented and consistent with record keeping</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Inventory%20Manager&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Inventory%20Manager%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Inventory Manager</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Inventory Manager</b>.</p>
   </div>
 </details>
       <div class="role-group-title" style="--gc:var(--purple);"><i></i>Community Outreach</div>
@@ -841,10 +854,9 @@
     <h4>Purpose of the role</h4><p>Builds and maintains relationships with schools so girls in need can be identified and reached consistently.</p>
     <h4>Key responsibilities</h4><ul><li>Approach schools to introduce the initiative and gain access</li><li>Work with teachers and school nurses to identify girls in need</li><li>Coordinate distribution schedules with school administration</li><li>Collect anonymized feedback on impact, such as attendance and wellbeing</li><li>Maintain a respectful, trust based relationship with each school</li></ul>
     <h4>Requirements</h4><ul><li>Comfortable speaking with teachers, school heads, and children</li><li>Sensitive and respectful approach to a personal topic</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20School%20Liaison%20Officer&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20School%20Liaison%20Officer%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: School Liaison Officer</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: School Liaison Officer</b>.</p>
   </div>
 </details>
       <details class="role" style="--gc:var(--purple);">
@@ -854,10 +866,9 @@
     <h4>Purpose of the role</h4><p>Extends the initiative&#x27;s reach beyond schools by connecting with local leaders, clinics, and faith groups to find girls and women who need support outside the school system.</p>
     <h4>Key responsibilities</h4><ul><li>Build relationships with community and religious leaders and clinics</li><li>Identify women and out of school girls in need of pads</li><li>Coordinate community distribution points and schedules</li><li>Represent h0p3 organization respectfully at community events</li><li>Report community needs and feedback back to the team</li></ul>
     <h4>Requirements</h4><ul><li>Strong community ties or comfort building new ones</li><li>Respectful, culturally sensitive communication style</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Community%20Liaison%20Officer&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Community%20Liaison%20Officer%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Community Liaison Officer</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Community Liaison Officer</b>.</p>
   </div>
 </details>
       <details class="role" style="--gc:var(--purple);">
@@ -867,10 +878,9 @@
     <h4>Purpose of the role</h4><p>Leads menstrual health education sessions for girls, often as a young woman herself, making the topic approachable and free of stigma.</p>
     <h4>Key responsibilities</h4><ul><li>Deliver simple, age appropriate menstrual health talks</li><li>Answer questions from girls in a comfortable, non judgmental way</li><li>Help distribute pad kits during and after sessions</li><li>Share feedback on common questions and concerns with the team</li></ul>
     <h4>Requirements</h4><ul><li>Confident speaking to groups of children and teens</li><li>Comfortable discussing menstrual health openly</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Peer%20Educator&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Peer%20Educator%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Peer Educator</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Peer Educator</b>.</p>
   </div>
 </details>
       <div class="role-group-title" style="--gc:var(--lime);"><i></i>Fundraising and Communications</div>
@@ -881,10 +891,9 @@
     <h4>Purpose of the role</h4><p>Drives the support that makes the whole initiative possible through donor relationships, grants, and campaigns.</p>
     <h4>Key responsibilities</h4><ul><li>Identify and approach individual donors, companies, and grant makers</li><li>Draft and submit grant applications</li><li>Plan and run fundraising campaigns, online and offline</li><li>Maintain donor records and send thank you and impact updates</li><li>Track progress against fundraising targets</li></ul>
     <h4>Requirements</h4><ul><li>Strong written communication skills</li><li>Comfortable reaching out to donors and organizations directly</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Fundraising%20Officer&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Fundraising%20Officer%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Fundraising Officer</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Fundraising Officer</b>.</p>
   </div>
 </details>
       <details class="role" style="--gc:var(--lime);">
@@ -894,10 +903,9 @@
     <h4>Purpose of the role</h4><p>Tells the story of the initiative online, building visibility, trust, and online donations.</p>
     <h4>Key responsibilities</h4><ul><li>Create and schedule social media posts (photos, stories, updates)</li><li>Design simple graphics and flyers using h0p3 branding</li><li>Capture consented photos and stories from distribution days</li><li>Respond to comments and messages and grow the online audience</li><li>Support crowdfunding campaigns with content</li></ul>
     <h4>Requirements</h4><ul><li>Comfortable with at least one social platform (Instagram, Facebook, TikTok, and others)</li><li>Basic content creation skills (photos, captions, simple design tools like Canva)</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Social%20Media%20and%20Content%20Volunteer&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Social%20Media%20and%20Content%20Volunteer%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Social Media and Content Volunteer</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Social Media and Content Volunteer</b>.</p>
   </div>
 </details>
       <details class="role" style="--gc:var(--lime);">
@@ -907,10 +915,9 @@
     <h4>Purpose of the role</h4><p>Opens doors with businesses, manufacturers, and other NGOs to build sponsorships and long term collaborations.</p>
     <h4>Key responsibilities</h4><ul><li>Identify potential corporate and NGO partners</li><li>Prepare and deliver partnership pitches and proposals</li><li>Negotiate sponsorship and in kind support agreements</li><li>Maintain ongoing relationships with existing partners</li><li>Coordinate joint events or co branded campaigns with partners</li></ul>
     <h4>Requirements</h4><ul><li>Confident, professional communication style</li><li>Comfortable with cold outreach and pitching</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Partnerships%20Officer&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Partnerships%20Officer%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Partnerships Officer</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Partnerships Officer</b>.</p>
   </div>
 </details>
       <div class="role-group-title" style="--gc:var(--green);"><i></i>Support</div>
@@ -921,10 +928,9 @@
     <h4>Purpose of the role</h4><p>Keeps the initiative&#x27;s money transparent, accountable, and properly tracked, protecting donor trust.</p>
     <h4>Key responsibilities</h4><ul><li>Track all donations received and expenses made</li><li>Prepare simple monthly financial summaries</li><li>Ensure funds are used according to donor intent</li><li>Support the Fundraising Officer with donation records for reporting</li><li>Flag any irregularities or budget concerns</li></ul>
     <h4>Requirements</h4><ul><li>Basic understanding of budgets and numbers</li><li>Comfortable with spreadsheets (Excel, Google Sheets)</li><li>High level of honesty and attention to detail</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Finance%20/%20Treasurer&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Finance%20/%20Treasurer%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Finance / Treasurer</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Finance / Treasurer</b>.</p>
   </div>
 </details>
       <details class="role" style="--gc:var(--green);">
@@ -934,10 +940,9 @@
     <h4>Purpose of the role</h4><p>Measures the initiative&#x27;s real world impact, turning activity into evidence that donors and the team can trust.</p>
     <h4>Key responsibilities</h4><ul><li>Design simple tools to track reach (girls served, schools covered)</li><li>Collect and organize data from Liaison Officers and distribution days</li><li>Analyze trends such as attendance changes where possible</li><li>Produce quarterly impact reports for donors and leadership</li><li>Recommend improvements based on findings</li></ul>
     <h4>Requirements</h4><ul><li>Comfortable working with data and basic spreadsheets</li><li>Good written communication for report writing</li><li>No prior experience required. Willingness to learn and commit is what matters most.</li></ul>
-    <div class="apply-gated"><h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
+    <h4>How to apply</h4><p>Tap the button below to open an email to us with this role already in the subject line. Fill in the details in the email, attach anything listed below, and send it.</p><ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>A few lines on why you want this role</li><li>Attach your CV if you have one (not required)</li></ul>
     <a class="role-apply" href="mailto:h0p3.organization@gmail.com?subject=Volunteer%20application%3A%20Monitoring%20and%20Evaluation%20%28M%26E%29%20Volunteer&amp;body=Hello%20h0p3%20organization%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20Monitoring%20and%20Evaluation%20%28M%26E%29%20Volunteer%20volunteer%20position.%0D%0A%0D%0AFull%20name%3A%0D%0APhone%20/%20WhatsApp%20number%3A%0D%0AArea%20/%20suburb%3A%0D%0AAge%3A%0D%0AWhen%20I%20am%20available%3A%0D%0A%0D%0AWhy%20I%20want%20this%20role%3A%0D%0A%0D%0A%0D%0A%28Attached%3A%20my%20CV%2C%20if%20I%20have%20one%29%0D%0A%0D%0AThank%20you.">Apply by email</a>
-    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Monitoring and Evaluation (M&amp;E) Volunteer</b>.</p></div>
-    <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
+    <p class="email-fallback">Button not opening your email app? Send an email to <a href="mailto:h0p3.organization@gmail.com">h0p3.organization@gmail.com</a> with the subject <b>Volunteer application: Monitoring and Evaluation (M&amp;E) Volunteer</b>.</p>
   </div>
 </details>
 
@@ -955,14 +960,13 @@
      3. delete the "How to apply" heading, its list, the Apply button and the line under it
      4. add after the role-facts line, for example:
         <p class="past-note"><b>Filled:</b> November 2026</p>
-     5. update the number "There are 13 volunteer roles open right now" in the Open positions text -->
+     5. update the number in "There are 13 volunteer roles open right now" above the Ownership of Work clause -->
         </div>
         <div class="empty-state past-empty" id="pastRolesEmpty">No past positions yet. When a role is filled, cancelled or closed, it will be listed here.</div>
       </div>
 
       <h3 class="sub-heading">Not sure which role fits? Express your interest</h3>
       <p class="lead">Send us an email and we'll be in touch. It goes straight to our team for review. No experience is required, just a willingness to help.</p>
-      <div class="apply-gated">
       <div class="email-box">
         <p>Tap the button to open an email to us. Please include:</p>
         <ul><li>Your full name, phone or WhatsApp number, and the area you live in</li><li>Your age and when you are usually available</li><li>How you would like to help (Pads Donation, Breaking The Bread, events, or anything that is needed)</li><li>Your CV, attached, if you have one (not required)</li></ul>
@@ -971,7 +975,6 @@
         <p class="form-privacy">Your phone number and email stay private and are only used by h0p3 organization. Read how we look after your information in our <a href="#privacy" data-tab="privacy">Privacy Policy</a>.</p>
       </div>
       </div>
-      <div class="apply-locked">To see how to apply, please <button type="button" class="go-agree">read and agree to the volunteer terms</button> first.</div>
     </div>
   </section>
 
@@ -1066,7 +1069,7 @@
       <span class="eyebrow blue">the ground rules</span>
       <div class="interlock"><span></span><span></span><span></span><span></span></div>
       <h2 class="section-title">Terms of Use</h2>
-      <p class="updated">Last updated: 11 November 2026</p>
+      <p class="updated">Last updated: 13 November 2026</p>
 
       <div class="summary"><p>In short: please use this website kindly and honestly. h0p3 organization shares stories and donation requests, but we do not collect or hold the money, and we cannot guarantee any story. We will never ask you for bank or card details on this website.</p></div>
 
@@ -1113,6 +1116,13 @@
 
       <h3 class="sub-heading">7. Volunteering</h3>
       <p>Volunteering with h0p3 organization is unpaid and is not employment. Sending a volunteer application does not guarantee a role. We may ask for more information before someone joins an activity, we may decline an application, and we may end someone's involvement if they do not follow our guidance or put others at risk.</p>
+      <p><strong>Ownership of Work.</strong> Every volunteer must agree to the following clause before applying:</p>
+      <ul>
+        <li>I understand and agree that any work, content or material I create, design, write, photograph, film, build or contribute while volunteering for or on behalf of h0p3 organization, whether alone or together with others, belongs fully to h0p3 organization.</li>
+        <li>This includes, but is not limited to, designs, logos, graphics, photographs, videos, written content, social media posts, documents, websites, ideas and event materials.</li>
+        <li>h0p3 organization may use, edit, publish, share or adapt this work for any purpose without further permission or payment.</li>
+        <li>I will not claim ownership of this work or use it for personal or commercial purposes without written permission from h0p3 organization.</li>
+      </ul>
 
       <h3 class="sub-heading">8. Physical donations and drop off points</h3>
       <p>Products and supplies given to h0p3 organization are given freely and used for our programmes. We may direct them to where they are needed most, and we cannot return them. Our drop off points are businesses that help us voluntarily, and their opening hours can change, so please check with us before you drop something off.</p>
@@ -1872,43 +1882,65 @@ document.getElementById('navToggle').addEventListener('click', e=>{
   });
 })();
 
-/* ========================= VOLUNTEER AGREEMENT GATE ========================= */
-(function volunteerAgreement(){
-  const box = document.getElementById('volAgree');
-  if(!box) return;
-  const status = document.getElementById('volAgreeStatus');
-  const TERMS = 'h0p3 organization volunteer terms, Terms of Use and Privacy Policy (version of 11 November 2026)';
-  const links = document.querySelectorAll('#volunteer .apply-gated a[href^="mailto:"][href*="body="]');
+/* ========================= OWNERSHIP OF WORK GATE (Volunteer page) ========================= */
+(function ownershipGate(){
+  const form = document.getElementById('clauseForm');
+  if(!form) return;
+  const CLAUSE_VERSION = '13 November 2026';
+  const KEY = 'h0p3-ownership-agreement';
+  const nameEl = document.getElementById('clauseName');
+  const emailEl = document.getElementById('clauseEmail');
+  const tick = document.getElementById('clauseAgree');
+  const btn = document.getElementById('clauseBtn');
+  const msg = document.getElementById('clauseMsg');
+  const done = document.getElementById('clauseDone');
+  const doneText = document.getElementById('clauseDoneText');
+  const links = Array.from(document.querySelectorAll('#rolesGated a[href^="mailto:"][href*="body="]'));
   links.forEach(a => a.dataset.baseHref = a.getAttribute('href'));
-  function stamp(){
-    const d = new Date();
-    return d.toLocaleString('en-ZA', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'});
+  const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+  function check(){
+    const ok = nameEl.value.trim().length >= 2 && emailOk(emailEl.value.trim()) && tick.checked;
+    btn.disabled = !ok;
+    msg.textContent = '';
+    return ok;
   }
-  function apply(){
-    const on = box.checked;
-    document.body.classList.toggle('vol-agreed', on);
-    if(on){
-      const when = stamp();
-      const line = '\r\n\r\nAGREEMENT: I confirm that I have read and agree to the ' + TERMS + '. Agreed on www.h0p3.org on ' + when + '.';
-      links.forEach(a => {
-        const base = a.dataset.baseHref;
-        a.setAttribute('href', base + encodeURIComponent(line));
-      });
-      status.textContent = 'Thank you. The application details are now showing on each role, and your agreement will be included in your application email.';
-    } else {
-      links.forEach(a => a.setAttribute('href', a.dataset.baseHref));
-      status.textContent = '';
-    }
+  [nameEl, emailEl, tick].forEach(el => el.addEventListener('input', check));
+  tick.addEventListener('change', check);
+  function store(rec){ try{ localStorage.setItem(KEY, JSON.stringify(rec)); }catch(e){} }
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY) || 'null'); }catch(e){ return null; } }
+  function clear(){ try{ localStorage.removeItem(KEY); }catch(e){} }
+  function unlock(rec){
+    document.body.classList.add('clause-agreed');
+    done.hidden = false;
+    doneText.textContent = 'Thank you, ' + rec.name + '. You agreed to the Ownership of Work clause on ' + rec.date + '.';
+    const line = '\r\n\r\nAGREEMENT: I, ' + rec.name + ' (' + rec.email + '), have read and agree to the h0p3 organization Ownership of Work clause (version of ' + CLAUSE_VERSION + '). I agreed on www.h0p3.org on ' + rec.date + '.';
+    links.forEach(a => {
+      let base = a.dataset.baseHref;
+      base = base.replace(/Full%20name%3A/, 'Full%20name%3A%20' + encodeURIComponent(rec.name));
+      a.setAttribute('href', base + encodeURIComponent(line));
+    });
   }
-  box.addEventListener('change', apply);
-  apply();
-  document.querySelectorAll('#volunteer .go-agree').forEach(b => b.addEventListener('click', () => {
-    const target = document.getElementById('volunteer-agreement');
-    const openTab = document.querySelector('[data-role-tab="open"]');
-    if(openTab && openTab.getAttribute('aria-selected') !== 'true') openTab.click();
-    target.scrollIntoView({behavior:'smooth', block:'start'});
-    setTimeout(() => box.focus({preventScroll:true}), 400);
-  }));
+  function lock(){
+    document.body.classList.remove('clause-agreed');
+    done.hidden = true;
+    links.forEach(a => a.setAttribute('href', a.dataset.baseHref));
+    nameEl.value = ''; emailEl.value = ''; tick.checked = false; check();
+  }
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if(!check()) return;
+    const date = new Date().toLocaleString('en-ZA', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'});
+    const rec = {name: nameEl.value.trim(), email: emailEl.value.trim(), date, version: CLAUSE_VERSION};
+    store(rec); unlock(rec);
+    document.getElementById('open-roles').scrollIntoView({block:'start'});
+  });
+  document.getElementById('clauseReset').addEventListener('click', () => {
+    clear(); lock();
+    document.getElementById('clauseGate').scrollIntoView({block:'start'});
+  });
+  const saved = load();
+  if(saved && saved.name && saved.email && saved.version === CLAUSE_VERSION) unlock(saved);
+  check();
 })();
 
 /* ========================= SCROLL REVEAL (About timeline) ========================= */
